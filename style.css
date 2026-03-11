@@ -185,6 +185,7 @@ button.secondary:hover {
     cursor: pointer;
     transition: all 0.3s;
     text-align: center;
+    position: relative;
 }
 
 .recipe-card:hover {
@@ -206,6 +207,30 @@ button.secondary:hover {
 .recipe-preview {
     color: #666;
     font-size: 16px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff4757;
+    color: white;
+    font-size: 18px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
 .empty-state {

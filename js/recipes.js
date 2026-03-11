@@ -15,6 +15,7 @@ function renderRecipes() {
         const div = document.createElement('div');
         div.className = 'recipe-card';
         div.innerHTML = `
+            <button class="delete-btn" onclick="event.stopPropagation(); deleteRecipe(${r.id})">🗑️</button>
             <div class="recipe-emoji">🍽️</div>
             <h3>${r.title}</h3>
             <p class="recipe-preview">${r.ingredients.substring(0, 50)}...</p>
@@ -77,6 +78,16 @@ function saveNewRecipe() {
     showScreen('list-screen');
 }
 
+// מחיקת מתכון
+function deleteRecipe(id) {
+    if (!confirm('האם את בטוחה שברצונך למחוק את המתכון?')) return;
+    
+    let recipes = JSON.parse(localStorage.getItem('recipes'));
+    recipes = recipes.filter(r => r.id !== id);
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+    renderRecipes();
+}
+
 // חיפוש מתכונים
 function searchRecipes() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
@@ -98,6 +109,7 @@ function searchRecipes() {
         const div = document.createElement('div');
         div.className = 'recipe-card';
         div.innerHTML = `
+            <button class="delete-btn" onclick="event.stopPropagation(); deleteRecipe(${r.id})">🗑️</button>
             <div class="recipe-emoji">🍽️</div>
             <h3>${r.title}</h3>
             <p class="recipe-preview">${r.ingredients.substring(0, 50)}...</p>
