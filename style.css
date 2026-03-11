@@ -1,0 +1,469 @@
+:root {
+    --primary: #ff6b6b;
+    --secondary: #4ecdc4;
+    --accent: #ffe66d;
+    --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text: #2d3436;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.screen {
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden { display: none !important; }
+
+/* --- מסך התחברות --- */
+.login-container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    width: 95%;
+    max-width: 600px;
+    margin-top: 10vh;
+    animation: slideIn 0.5s ease;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 80px;
+    margin: 0;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- שדות קלט --- */
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* --- כפתורים --- */
+button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: linear-gradient(135deg, var(--primary) 0%, #ee5a6f 100%);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+button.secondary {
+    background: linear-gradient(135deg, var(--secondary) 0%, #45b7af 100%);
+}
+
+button.secondary:hover {
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.toggle-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.toggle-text a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.toggle-text a:hover {
+    text-decoration: underline;
+}
+
+/* --- ראש העמוד --- */
+.header-bar {
+    width: 95%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.header-bar h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 0;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* --- חיפוש --- */
+.search-container {
+    width: 95%;
+    max-width: 1400px;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    background: white;
+    box-shadow: var(--shadow);
+    font-size: 18px;
+    padding: 18px;
+}
+
+/* --- רשת מתכונים --- */
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    width: 95%;
+    max-width: 1400px;
+    padding-bottom: 100px;
+}
+
+.recipe-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.recipe-emoji {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+.recipe-card h3 {
+    color: var(--primary);
+    margin: 15px 0;
+    font-size: 24px;
+}
+
+.recipe-preview {
+    color: #666;
+    font-size: 16px;
+}
+
+.empty-state {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+/* --- כפתור צף --- */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 40px;
+    background: linear-gradient(135deg, var(--accent) 0%, #ffd93d 100%);
+    color: var(--text);
+    box-shadow: 0 10px 30px rgba(255, 230, 109, 0.5);
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* --- טופס הוספה/הגדרות --- */
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    width: 95%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.form-container h2 {
+    color: var(--primary);
+    text-align: center;
+    font-size: 32px;
+}
+
+/* --- תצודת מתכון --- */
+.recipe-container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    width: 95%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+.back-btn {
+    width: auto;
+    padding: 12px 25px;
+    background: var(--secondary);
+    color: white;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    transform: translateX(5px);
+}
+
+.recipe-title {
+    color: var(--primary);
+    text-align: center;
+    font-size: 42px;
+    margin: 20px 0;
+}
+
+.ingredients-box, .steps-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 25px 0;
+}
+
+.ingredients-box h3, .steps-box h3 {
+    color: var(--secondary);
+    margin-top: 0;
+    font-size: 26px;
+}
+
+.ingredients-box p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.step-number {
+    background: var(--primary);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.step-item p {
+    margin: 0;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.stop-btn {
+    background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+}
+
+/* --- הגדרות --- */
+.setting-group {
+    margin: 25px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.setting-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.theme-buttons, .font-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-btn, .size-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    background: white;
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+.theme-btn:hover, .size-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.theme-btn.active, .size-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.light-theme-btn {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+}
+
+.dark-theme-btn {
+    background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+    color: white;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    margin: 10px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.setting-group span {
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+/* --- ערכת צבעים כהה --- */
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.dark-theme .login-container,
+body.dark-theme .form-container,
+body.dark-theme .recipe-container,
+body.dark-theme .recipe-card {
+    background: #2d3436;
+    color: #dfe6e9;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+    color: #74b9ff;
+}
+
+body.dark-theme input,
+body.dark-theme textarea {
+    background: #1e272e;
+    color: #dfe6e9;
+    border-color: #485460;
+}
+
+body.dark-theme .ingredients-box,
+body.dark-theme .steps-box,
+body.dark-theme .setting-group {
+    background: #1e272e;
+}
+
+body.dark-theme .recipe-preview {
+    color: #b2bec3;
+}
+
+body.dark-theme .header-bar {
+    color: #dfe6e9;
+}

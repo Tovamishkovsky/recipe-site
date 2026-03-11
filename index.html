@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 ספר המתכונים הקולי שלי</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="login-screen" class="screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1 class="logo">🍳</h1>
+                <h2 id="form-title">ברוכה הבאה!</h2>
+            </div>
+            <input type="text" id="username" placeholder="שם משתמש">
+            <input type="password" id="password" placeholder="סיסמה">
+            <input type="password" id="confirm-password" class="hidden" placeholder="אימות סיסמה">
+            <button id="submit-btn" onclick="handleLogin()">התחברי</button>
+            <p class="toggle-text">
+                <span id="toggle-message">עדיין אין לך חשבון?</span>
+                <a href="#" onclick="toggleAuthMode(); return false;" id="toggle-link">הירשמי כאן</a>
+            </p>
+        </div>
+    </section>
+
+    <section id="list-screen" class="screen hidden">
+        <div class="header-bar">
+            <h1>🍳 המתכונים שלי</h1>
+            <button class="icon-btn" onclick="showScreen('settings-screen')">⚙️</button>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 חיפוש מתכון..." onkeyup="searchRecipes()">
+        </div>
+        <div id="recipes-container" class="recipes-grid"></div>
+        <button class="fab" onclick="showAddRecipeForm()">+</button>
+    </section>
+
+    <section id="settings-screen" class="screen hidden">
+        <div class="form-container">
+            <h2>⚙️ הגדרות</h2>
+            
+            <div class="setting-group">
+                <label>🎨 ערכת צבעים:</label>
+                <div class="theme-buttons">
+                    <button onclick="setTheme('light')" class="theme-btn light-theme-btn">☀️ בהיר</button>
+                    <button onclick="setTheme('dark')" class="theme-btn dark-theme-btn">🌙 כהה</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>📏 גודל כתב:</label>
+                <div class="font-buttons">
+                    <button onclick="setFontSize('small')" class="size-btn">קטן</button>
+                    <button onclick="setFontSize('medium')" class="size-btn">בינוני</button>
+                    <button onclick="setFontSize('large')" class="size-btn">גדול</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>🔊 מהירות דיבור:</label>
+                <input type="range" id="speech-rate" min="0.5" max="2" step="0.1" value="0.9">
+                <span id="rate-value">רגיל</span>
+            </div>
+
+            <div class="setting-group">
+                <label>⏱️ הפסקה בין שורות (שניות):</label>
+                <input type="range" id="delay-input" min="0" max="5" step="0.5" value="2">
+                <span id="delay-value">2</span>
+            </div>
+
+            <div class="setting-group">
+                <label>🎵 עוצמת קול:</label>
+                <input type="range" id="volume-input" min="0" max="1" step="0.1" value="1">
+                <span id="volume-value">100%</span>
+            </div>
+
+            <button onclick="saveSettings()">💾 שמור הגדרות</button>
+            <button class="secondary" onclick="showScreen('list-screen')">חזרה</button>
+        </div>
+    </section>
+
+    <section id="add-recipe-screen" class="screen hidden">
+        <div class="form-container">
+            <h2>➕ הוספת מתכון חדש</h2>
+            <input type="text" id="new-title" placeholder="שם המתכון">
+            <textarea id="new-ingredients" placeholder="חומרים (מופרדים בפסיקים)" rows="3"></textarea>
+            <textarea id="new-instructions" placeholder="הוראות הכנה (כל שורה = שלב)" rows="6"></textarea>
+            <button onclick="saveNewRecipe()">💾 שמור מתכון</button>
+            <button class="secondary" onclick="showScreen('list-screen')">ביטול</button>
+        </div>
+    </section>
+
+    <section id="recipe-view-screen" class="screen hidden">
+        <div class="recipe-container">
+            <button class="back-btn" onclick="showScreen('list-screen')">← חזרה</button>
+            <h1 id="view-title" class="recipe-title"></h1>
+            <div class="ingredients-box">
+                <h3>🥘 חומרים:</h3>
+                <p id="view-ingredients"></p>
+            </div>
+            <div class="steps-box">
+                <h3>👩‍🍳 אופן ההכנה:</h3>
+                <div id="view-steps"></div>
+            </div>
+            <div class="controls">
+                <button id="play-btn" class="play-btn">🔊 הקרא מתכון</button>
+                <button id="stop-btn" class="stop-btn">⏹️ עצור</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/recipes.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/speech.js"></script>
+</body>
+</html>
